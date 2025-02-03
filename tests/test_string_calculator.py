@@ -50,3 +50,10 @@ def test_add_negative_numbers():
     with pytest.raises(ValueError) as e:
         add("1,-2,-3,-6,7,-3")
     assert str(e.value) == "negative numbers not allowed: -2, -3, -6, -3"
+
+
+def test_add_numbers_bigger_than_1000():
+    assert add("1001,2") == 2
+    assert add("1000,2") == 1002
+    assert add("1000,1000") == 2000
+    assert add("1001,1001") == 0

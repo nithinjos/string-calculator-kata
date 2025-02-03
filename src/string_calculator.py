@@ -17,4 +17,4 @@ def add(string):
         if negatives:
             raise ValueError(
                 f"negative numbers not allowed: {', '.join(negatives)}")
-        return sum([int(number) for number in numbers])
+        return sum([int(number) for number in numbers if int(number) <= 1000])
