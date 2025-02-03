@@ -1,3 +1,5 @@
+import pytest
+
 from src.string_calculator import add
 
 
@@ -37,3 +39,14 @@ def test_add_custom_delimiter():
     assert add("//.\n1.2.3.4") == 10
     assert add("//.\n1.2\n3.4") == 10
     assert add("//.\n1.2\n3\n4") == 10
+
+
+def test_add_negative_numbers():
+
+    with pytest.raises(ValueError) as e:
+        add("-1,2")
+    assert str(e.value) == "negative numbers not allowed: -1"
+
+    with pytest.raises(ValueError) as e:
+        add("1,-2,-3,-6,7,-3")
+    assert str(e.value) == "negative numbers not allowed: -2, -3, -6, -3"
