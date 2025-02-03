@@ -29,3 +29,11 @@ def test_add_newline_delimiter():
     assert add("1\n2,3") == 6
     assert add("1\n2\n3") == 6
     assert add("1,2,3\n4") == 10
+
+
+def test_add_custom_delimiter():
+    assert add("//;\n1;2") == 3
+    assert add("//|\n1|2|3") == 6
+    assert add("//.\n1.2.3.4") == 10
+    assert add("//.\n1.2\n3.4") == 10
+    assert add("//.\n1.2\n3\n4") == 10
