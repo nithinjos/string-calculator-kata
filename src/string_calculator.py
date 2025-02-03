@@ -1,15 +1,28 @@
-def get_numbers(string):
-    if string.startswith("//"):
-        string = string.replace("//", "")
-        delimiter_with_brackets = string.split("\n")[0]
-        string = string.strip(delimiter_with_brackets).strip("\n")
-        delimiter = delimiter_with_brackets.strip("[]")
+def replace_delimiters(string):
+    """ Replace delimiters in the string with commas """
+    string = string.replace("//", "")
+    delimiter_conf = string.split("\n")[0]
+    string = string.strip(delimiter_conf).strip("\n")
+    delimiter = delimiter_conf.strip("[]")
+    if "[" in delimiter:
+        delimiters = delimiter.split("][")
+        for each_delimeter in delimiters:
+            string = string.replace(each_delimeter, ",")
+    else:
         string = string.replace(delimiter, ",")
+    return string
+
+
+def get_numbers(string):
+    """ Get numbers from the string """
+    if string.startswith("//"):
+        string = replace_delimiters(string)
     string = string.replace("\n", ",")
     return string.split(",")
 
 
 def add(string):
+    """ Add numbers in the string """
     if string == "":
         return 0
     else:

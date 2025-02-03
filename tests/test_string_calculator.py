@@ -64,3 +64,14 @@ def test_add_custom_delimiter_of_any_length():
     assert add("//[||||]\n1||||2||||3") == 6
     assert add("//[....]\n1....2....3") == 6
     assert add("//[....]\n1....2\n3....4") == 10
+
+
+def test_add_multiple_custom_delimiters():
+    assert add("//[*][%]\n1*2%3") == 6
+    assert add("//[|][.]\n1|2.3") == 6
+    assert add("//[.][|]\n1.2\n3") == 6
+
+
+def test_add_multiple_custom_delimiters_of_any_length():
+    assert add("//[**][%%]\n1**2%%3") == 6
+    assert add("//[||][.]\n1||2.3") == 6
