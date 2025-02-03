@@ -25,3 +25,7 @@ def test_add_several_numbers():
     assert add("1,2,3,4,5,6,7,8,9") == 45
 
 
+def test_add_newline_delimiter():
+    assert add("1\n2,3") == 6
+    assert add("1\n2\n3") == 6
+    assert add("1,2,3\n4") == 10
