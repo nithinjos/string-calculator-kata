@@ -57,3 +57,10 @@ def test_add_numbers_bigger_than_1000():
     assert add("1000,2") == 1002
     assert add("1000,1000") == 2000
     assert add("1001,1001") == 0
+
+
+def test_add_custom_delimiter_of_any_length():
+    assert add("//[***]\n1***2***3") == 6
+    assert add("//[||||]\n1||||2||||3") == 6
+    assert add("//[....]\n1....2....3") == 6
+    assert add("//[....]\n1....2\n3....4") == 10

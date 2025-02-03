@@ -1,8 +1,9 @@
 def get_numbers(string):
     if string.startswith("//"):
         string = string.replace("//", "")
-        delimiter = string.split("\n")[0]
-        string = string.strip(delimiter).strip("\n")
+        delimiter_with_brackets = string.split("\n")[0]
+        string = string.strip(delimiter_with_brackets).strip("\n")
+        delimiter = delimiter_with_brackets.strip("[]")
         string = string.replace(delimiter, ",")
     string = string.replace("\n", ",")
     return string.split(",")
